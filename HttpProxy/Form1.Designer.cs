@@ -30,7 +30,6 @@
         {
             this.btnStartStop = new System.Windows.Forms.Button();
             this.btnClearLog = new System.Windows.Forms.Button();
-            this.txtProxyPort = new System.Windows.Forms.TextBox();
             this.txtCacheTimeOut = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,12 +45,13 @@
             this.checkBoxLoggingContentOut = new System.Windows.Forms.CheckBox();
             this.checkBoxLoggingClient = new System.Windows.Forms.CheckBox();
             this.listBoxLog = new System.Windows.Forms.ListBox();
+            this.txtProxyPort = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnStartStop
             // 
             this.btnStartStop.Location = new System.Drawing.Point(502, 10);
-            this.btnStartStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartStop.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(163, 87);
             this.btnStartStop.TabIndex = 0;
@@ -62,26 +62,18 @@
             // btnClearLog
             // 
             this.btnClearLog.Location = new System.Drawing.Point(9, 374);
-            this.btnClearLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClearLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(262, 33);
             this.btnClearLog.TabIndex = 1;
             this.btnClearLog.Text = "Clear log";
             this.btnClearLog.UseVisualStyleBackColor = true;
-            // 
-            // txtProxyPort
-            // 
-            this.txtProxyPort.Location = new System.Drawing.Point(502, 102);
-            this.txtProxyPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtProxyPort.Name = "txtProxyPort";
-            this.txtProxyPort.Size = new System.Drawing.Size(163, 20);
-            this.txtProxyPort.TabIndex = 3;
-            this.txtProxyPort.Text = "9000";
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click_1);
             // 
             // txtCacheTimeOut
             // 
             this.txtCacheTimeOut.Location = new System.Drawing.Point(502, 126);
-            this.txtCacheTimeOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCacheTimeOut.Margin = new System.Windows.Forms.Padding(2);
             this.txtCacheTimeOut.Name = "txtCacheTimeOut";
             this.txtCacheTimeOut.Size = new System.Drawing.Size(163, 20);
             this.txtCacheTimeOut.TabIndex = 4;
@@ -110,8 +102,8 @@
             // checkBoxContentCheck
             // 
             this.checkBoxContentCheck.AutoSize = true;
-            this.checkBoxContentCheck.Location = new System.Drawing.Point(379, 149);
-            this.checkBoxContentCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxContentCheck.Location = new System.Drawing.Point(375, 153);
+            this.checkBoxContentCheck.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxContentCheck.Name = "checkBoxContentCheck";
             this.checkBoxContentCheck.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxContentCheck.Size = new System.Drawing.Size(293, 17);
@@ -122,8 +114,8 @@
             // checkBoxContentFilter
             // 
             this.checkBoxContentFilter.AutoSize = true;
-            this.checkBoxContentFilter.Location = new System.Drawing.Point(510, 171);
-            this.checkBoxContentFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxContentFilter.Location = new System.Drawing.Point(509, 178);
+            this.checkBoxContentFilter.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxContentFilter.Name = "checkBoxContentFilter";
             this.checkBoxContentFilter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxContentFilter.Size = new System.Drawing.Size(159, 17);
@@ -134,8 +126,8 @@
             // checkBoxChangeHeaders
             // 
             this.checkBoxChangeHeaders.AutoSize = true;
-            this.checkBoxChangeHeaders.Location = new System.Drawing.Point(442, 193);
-            this.checkBoxChangeHeaders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxChangeHeaders.Location = new System.Drawing.Point(441, 198);
+            this.checkBoxChangeHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxChangeHeaders.Name = "checkBoxChangeHeaders";
             this.checkBoxChangeHeaders.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxChangeHeaders.Size = new System.Drawing.Size(227, 30);
@@ -146,8 +138,8 @@
             // checkBoxBasicAuth
             // 
             this.checkBoxBasicAuth.AutoSize = true;
-            this.checkBoxBasicAuth.Location = new System.Drawing.Point(428, 228);
-            this.checkBoxBasicAuth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxBasicAuth.Location = new System.Drawing.Point(426, 230);
+            this.checkBoxBasicAuth.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxBasicAuth.Name = "checkBoxBasicAuth";
             this.checkBoxBasicAuth.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxBasicAuth.Size = new System.Drawing.Size(242, 17);
@@ -158,11 +150,11 @@
             // txtBufferSize
             // 
             this.txtBufferSize.Location = new System.Drawing.Point(502, 266);
-            this.txtBufferSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBufferSize.Margin = new System.Windows.Forms.Padding(2);
             this.txtBufferSize.Name = "txtBufferSize";
             this.txtBufferSize.Size = new System.Drawing.Size(162, 20);
             this.txtBufferSize.TabIndex = 11;
-            this.txtBufferSize.Text = "1024 (1=no buffer)";
+            this.txtBufferSize.Text = "1024";
             // 
             // label3
             // 
@@ -177,8 +169,8 @@
             // checkBoxLoggingRequestHeaders
             // 
             this.checkBoxLoggingRequestHeaders.AutoSize = true;
-            this.checkBoxLoggingRequestHeaders.Location = new System.Drawing.Point(488, 302);
-            this.checkBoxLoggingRequestHeaders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxLoggingRequestHeaders.Location = new System.Drawing.Point(488, 297);
+            this.checkBoxLoggingRequestHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingRequestHeaders.Name = "checkBoxLoggingRequestHeaders";
             this.checkBoxLoggingRequestHeaders.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxLoggingRequestHeaders.Size = new System.Drawing.Size(180, 17);
@@ -189,8 +181,8 @@
             // checkBoxLoggingResponseHeaders
             // 
             this.checkBoxLoggingResponseHeaders.AutoSize = true;
-            this.checkBoxLoggingResponseHeaders.Location = new System.Drawing.Point(479, 324);
-            this.checkBoxLoggingResponseHeaders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxLoggingResponseHeaders.Location = new System.Drawing.Point(480, 318);
+            this.checkBoxLoggingResponseHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingResponseHeaders.Name = "checkBoxLoggingResponseHeaders";
             this.checkBoxLoggingResponseHeaders.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxLoggingResponseHeaders.Size = new System.Drawing.Size(188, 17);
@@ -201,8 +193,8 @@
             // checkBoxLoggingContentIn
             // 
             this.checkBoxLoggingContentIn.AutoSize = true;
-            this.checkBoxLoggingContentIn.Location = new System.Drawing.Point(518, 346);
-            this.checkBoxLoggingContentIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxLoggingContentIn.Location = new System.Drawing.Point(514, 339);
+            this.checkBoxLoggingContentIn.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingContentIn.Name = "checkBoxLoggingContentIn";
             this.checkBoxLoggingContentIn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxLoggingContentIn.Size = new System.Drawing.Size(154, 17);
@@ -213,8 +205,8 @@
             // checkBoxLoggingContentOut
             // 
             this.checkBoxLoggingContentOut.AutoSize = true;
-            this.checkBoxLoggingContentOut.Location = new System.Drawing.Point(511, 368);
-            this.checkBoxLoggingContentOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxLoggingContentOut.Location = new System.Drawing.Point(507, 361);
+            this.checkBoxLoggingContentOut.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingContentOut.Name = "checkBoxLoggingContentOut";
             this.checkBoxLoggingContentOut.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxLoggingContentOut.Size = new System.Drawing.Size(161, 17);
@@ -225,8 +217,8 @@
             // checkBoxLoggingClient
             // 
             this.checkBoxLoggingClient.AutoSize = true;
-            this.checkBoxLoggingClient.Location = new System.Drawing.Point(436, 390);
-            this.checkBoxLoggingClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxLoggingClient.Location = new System.Drawing.Point(435, 385);
+            this.checkBoxLoggingClient.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingClient.Name = "checkBoxLoggingClient";
             this.checkBoxLoggingClient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxLoggingClient.Size = new System.Drawing.Size(233, 17);
@@ -238,10 +230,21 @@
             // 
             this.listBoxLog.FormattingEnabled = true;
             this.listBoxLog.Location = new System.Drawing.Point(9, 10);
-            this.listBoxLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxLog.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxLog.Name = "listBoxLog";
             this.listBoxLog.Size = new System.Drawing.Size(263, 355);
             this.listBoxLog.TabIndex = 18;
+            // 
+            // txtProxyPort
+            // 
+            this.txtProxyPort.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtProxyPort.Location = new System.Drawing.Point(502, 102);
+            this.txtProxyPort.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProxyPort.Name = "txtProxyPort";
+            this.txtProxyPort.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtProxyPort.Size = new System.Drawing.Size(163, 20);
+            this.txtProxyPort.TabIndex = 3;
+            this.txtProxyPort.Text = "9000";
             // 
             // Form1
             // 
@@ -266,7 +269,7 @@
             this.Controls.Add(this.txtProxyPort);
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.btnStartStop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Proxy";
             this.ResumeLayout(false);
@@ -278,7 +281,6 @@
 
         private System.Windows.Forms.Button btnStartStop;
         private System.Windows.Forms.Button btnClearLog;
-        private System.Windows.Forms.TextBox txtProxyPort;
         private System.Windows.Forms.TextBox txtCacheTimeOut;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -294,6 +296,7 @@
         private System.Windows.Forms.CheckBox checkBoxLoggingContentOut;
         private System.Windows.Forms.CheckBox checkBoxLoggingClient;
         private System.Windows.Forms.ListBox listBoxLog;
+        private System.Windows.Forms.TextBox txtProxyPort;
     }
 }
 

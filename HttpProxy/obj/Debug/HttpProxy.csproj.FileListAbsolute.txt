@@ -7,3 +7,12 @@ C:\Users\Alex\Documents\School\NotS\WIN\Herkansing2020\HttpProxy\HttpProxy\obj\D
 C:\Users\Alex\Documents\School\NotS\WIN\Herkansing2020\HttpProxy\HttpProxy\obj\Debug\HttpProxy.csproj.GenerateResource.cache
 C:\Users\Alex\Documents\School\NotS\WIN\Herkansing2020\HttpProxy\HttpProxy\obj\Debug\HttpProxy.exe
 C:\Users\Alex\Documents\School\NotS\WIN\Herkansing2020\HttpProxy\HttpProxy\obj\Debug\HttpProxy.pdb
+C:\Users\Alex\Documents\httpproxy\HttpProxy\bin\Debug\HttpProxy.exe.config
+C:\Users\Alex\Documents\httpproxy\HttpProxy\bin\Debug\HttpProxy.exe
+C:\Users\Alex\Documents\httpproxy\HttpProxy\bin\Debug\HttpProxy.pdb
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.Form1.resources
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.Properties.Resources.resources
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.csproj.GenerateResource.cache
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.exe
+C:\Users\Alex\Documents\httpproxy\HttpProxy\obj\Debug\HttpProxy.pdb

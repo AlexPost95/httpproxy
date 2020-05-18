@@ -20,7 +20,6 @@ namespace HttpProxy
 
         private TcpListener tcpListener;
         private bool serverStarted;
-        int bufferSize = 1024;
         
         public Form1()
         {
@@ -77,8 +76,10 @@ namespace HttpProxy
 
         private void Start()
         {
-            tcpListener = new TcpListener(IPAddress.Any, 9000);
+            tcpListener = new TcpListener(IPAddress.Any, Int32.Parse(txtProxyPort.Text));
             tcpListener.Start();
+            AddMessage("Proxy started on port " + Int32.Parse(txtProxyPort.Text), listBoxLog);
+            AddMessage("Buffer size: " + Int32.Parse(txtBufferSize.Text), listBoxLog);
             Console.WriteLine(tcpListener);
             Task.Run(() => ListenForRequests());
             serverStarted = true;
@@ -87,6 +88,8 @@ namespace HttpProxy
         private void Stop()
         {
             tcpListener.Stop();
+            AddMessage("Proxy stopped", listBoxLog);
+
             tcpListener = null;
             serverStarted = false;
         }
@@ -115,7 +118,7 @@ namespace HttpProxy
             using (MemoryStream clientMs = new MemoryStream())
             {
                 Console.WriteLine(clientNs);
-                var buffer = new byte[bufferSize];
+                var buffer = new byte[Int32.Parse(txtBufferSize.Text)];
                 int bytesRead;
                 Thread.Sleep(5);
 
@@ -140,8 +143,6 @@ namespace HttpProxy
                     HttpRequest request = HttpRequest.Parse(clientMs.GetBuffer());
                     Console.WriteLine(request);
                     AddMessage(request.FirstLine, listBoxLog);
-                    AddMessage(request.Headers.ToString(), listBoxLog);
-                    AddMessage(request.Body.ToString(), listBoxLog);
                 }
                 catch (Exception)
                 {
@@ -151,6 +152,11 @@ namespace HttpProxy
             }
 
 
+        }
+
+        private void btnClearLog_Click_1(object sender, EventArgs e)
+        {
+            listBoxLog.Items.Clear();
         }
     }
 }
