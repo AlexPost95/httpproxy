@@ -113,37 +113,77 @@ namespace HttpProxy
 
         private async void HandleRequest(TcpClient client)
         {
+
+
             using(client)
             using (NetworkStream clientNs = client.GetStream())
             using (MemoryStream clientMs = new MemoryStream())
             {
-                Console.WriteLine(clientNs);
                 var buffer = new byte[Int32.Parse(txtBufferSize.Text)];
                 int bytesRead;
-                Thread.Sleep(5);
 
-                //If the memorystream can read, then
-                if (clientNs.CanRead)
-                {
-                    //If there's data available on the networkstream, then
-                    if (clientNs.DataAvailable)
-                    {
-                        do
-                        {
-                            //bytesRead = number of bytes read from the networkstream, while data is available
-                            bytesRead = clientNs.Read(buffer, 0, buffer.Length);
-                            //Fils memorystream with the data while data is available
-                            clientMs.Write(buffer, 0, bytesRead);
-                            Console.WriteLine(bytesRead);
-                        } while (clientNs.DataAvailable);
-                    }
-                }
+                bytesRead = clientNs.Read(buffer, 0, buffer.Length);
+                clientMs.Write(buffer, 0, bytesRead);
+
                 try
                 {
-                    HttpRequest request = HttpRequest.Parse(clientMs.GetBuffer());
-                    Console.WriteLine(request);
-                    AddMessage(request.FirstLine, listBoxLog);
+                    //HttpRequest request = HttpRequest.Parse(clientMs.GetBuffer());
+
+                    byte[] bytes = clientMs.GetBuffer();
+                    var lines = ReadLines(clientMs.GetBuffer());
+                    var body = ReadBody(clientMs.GetBuffer());
+
+                    String header = lines[0];
+                    String host = lines[1];
+                    String user_agent = lines[2];
+                    String accept = lines[3];
+                    String accept_language = lines[4];
+                    String accept_encoding = lines[5];
+                    String dnt = lines[6];
+                    String connection = lines[7];
+                    String upgrade_insecure_requests = lines[8];
+
+                    if (checkBoxLoggingRequestHeaders.Checked)
+                    {
+                        AddMessage(header, listBoxLog);
+                        AddMessage(host, listBoxLog);
+                        AddMessage(accept, listBoxLog);
+                        AddMessage(accept_language, listBoxLog);
+                        AddMessage(accept_encoding, listBoxLog);
+                        AddMessage(connection, listBoxLog);
+                        AddMessage(upgrade_insecure_requests, listBoxLog);
+
+                    }
+                    if (checkBoxLoggingClient.Checked)
+                    {
+                        AddMessage(user_agent, listBoxLog);
+                    }
+
+                    AddMessage(dnt, listBoxLog);
+
+                    var response = "";
+                    if (response == null)
+                    {
+                        try
+                        {
+                            ////using (TcpClient serverClient = new TcpClient(request.GetRequestedHost(), 80))
+                            //using (NetworkStream serverStream = serverClient.GetStream())
+                            //{
+                            //    var serverBuffer = new byte[Int32.Parse(txtBufferSize.Text)];
+                            //    using (MemoryStream ms = new MemoryStream())
+                            //    {
+                            //    }
+                            //}
+
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+
                 }
+
                 catch (Exception)
                 {
 
@@ -151,12 +191,72 @@ namespace HttpProxy
                 }
             }
 
-
         }
 
-        private void btnClearLog_Click_1(object sender, EventArgs e)
+        private void btnClearLog_Click(object sender, EventArgs e)
         {
             listBoxLog.Items.Clear();
         }
+
+        /// <summary>
+        /// Support function for parsing message, used for reading all lines
+        /// </summary>
+        /// <param name="ByteArray">HTTP message object</param>
+        /// <returns>List of all lines read in byte[]</returns>
+        protected static List<string> ReadLines(byte[] ByteArray)
+        {
+            List<string> lines = new List<string>();
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (byte b in ByteArray)
+            {
+                Console.WriteLine(b);
+                if (b == '\n')
+                {
+                    string line = stringBuilder.ToString();
+                    lines.Add(line);
+                    stringBuilder.Clear();
+                    continue;
+                }
+                if (b == '\r')
+                    continue;
+                stringBuilder.Append(Convert.ToChar(b));
+            }
+            lines.Add(stringBuilder.ToString());
+            return lines;
+        }
+
+        /// <summary>
+        /// Read the body of a HTTP message as byte[]
+        /// </summary>
+        /// <param name="ByteArray">HTTP message</param>
+        /// <returns>Byte[] of the body</returns>
+        protected static byte[] ReadBody(byte[] ByteArray)
+        {
+            StringBuilder sb = new StringBuilder();
+            int index = 0;
+            for (int i = 0; i < ByteArray.Length; i++)
+            {
+                if (ByteArray[i] == '\n')
+                {
+                    string line = sb.ToString();
+                    if (line == "")
+                    {
+                        index = i + 1;
+                        break;
+                    }
+                    sb.Clear();
+                    continue;
+                }
+                if (ByteArray[i] == '\r')
+                    continue;
+                sb.Append(Convert.ToChar(ByteArray[i]));
+            }
+            if (index > 0)
+            {
+                return ByteArray.Skip(index).ToArray();
+            }
+            return new byte[] { };
+        }
+
     }
 }

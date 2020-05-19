@@ -68,7 +68,7 @@
             this.btnClearLog.TabIndex = 1;
             this.btnClearLog.Text = "Clear log";
             this.btnClearLog.UseVisualStyleBackColor = true;
-            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click_1);
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
             // txtCacheTimeOut
             // 
@@ -169,6 +169,8 @@
             // checkBoxLoggingRequestHeaders
             // 
             this.checkBoxLoggingRequestHeaders.AutoSize = true;
+            this.checkBoxLoggingRequestHeaders.Checked = true;
+            this.checkBoxLoggingRequestHeaders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLoggingRequestHeaders.Location = new System.Drawing.Point(488, 297);
             this.checkBoxLoggingRequestHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxLoggingRequestHeaders.Name = "checkBoxLoggingRequestHeaders";

@@ -53,23 +53,23 @@ namespace HttpProxy.Models
         /// Checks if request asks server to send back an image
         /// </summary>
         /// <returns>True is requests image, otherwise false</returns>
-        public bool AsksForImage()
-        {
-            var ImageFiles = new string[] { ".jpg", ".png", ".gif", ".webp", ".svg", ".ai", ".eps" };
-            return ImageFiles.Any(type => RequestLine.Split(' ')[1].ToLower().Contains(type));
-        }
+        //public bool AsksForImage()
+        //{
+        //    var ImageFiles = new string[] { ".jpg", ".png", ".gif", ".webp", ".svg", ".ai", ".eps" };
+        //    return ImageFiles.Any(type => RequestLine.Split(' ')[1].ToLower().Contains(type));
+        //}
 
         /// <summary>
         /// Get the host from the request
         /// </summary>
         /// <returns>Host address as string</returns>
-        public string GetRequestedHost()
-        {
-            if (HasHeader("Host"))
-            {
-                return GetHeader("Host").Value;
-            }
-            return FirstLine.Split(' ')[1];
-        }
+        //public string GetRequestedHost()
+        //{
+        //    if (HasHeader("Host"))
+        //    {
+        //        return GetHeader("Host").Value;
+        //    }
+        //    return FirstLine.Split(' ')[1];
+        //}
     }
 }
